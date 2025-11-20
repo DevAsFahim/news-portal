@@ -9,11 +9,11 @@ const Navbar = () => {
         </div>
 
         <nav className='bg-gray-600 flex items-center justify-center'>
-          <a className='text-xl font-semibold py-3 px-5 hover:bg-amber-700' href="/">Home</a>
-          <a className='text-xl font-semibold py-3 px-5 hover:bg-amber-700' href="/politics">Politics</a>
-          <a className='text-xl font-semibold py-3 px-5 hover:bg-amber-700' href="/sports">Sports</a>
-          <a className='text-xl font-semibold py-3 px-5 hover:bg-amber-700' href="/technology">Technology</a>
-          <a className='text-xl font-semibold py-3 px-5 hover:bg-amber-700' href="/media">Media</a>
+          <a className='text-xl font-semibold py-3 px-5 text-white hover:bg-amber-700 border-x' href="/">Home</a>
+          <a className='text-xl font-semibold py-3 px-5 text-white hover:bg-amber-700 border-r' href="/politics">Politics</a>
+          <a className='text-xl font-semibold py-3 px-5 text-white hover:bg-amber-700 border-r' href="/sports">Sports</a>
+          <a className='text-xl font-semibold py-3 px-5 text-white hover:bg-amber-700 border-r' href="/technology">Technology</a>
+          <a className='text-xl font-semibold py-3 px-5 text-white hover:bg-amber-700 border-r' href="/media">Media</a>
         </nav>
     </div>
   )
