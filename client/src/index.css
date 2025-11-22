@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import "tailwindcss";
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Cabin", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: #222;
-  background-color: 	#f3dfc1;
+  background-color: 	#F3F3F3;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,8 +16,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@theme {
+  --color-muted: #5e5e5e; 
+  --color-black: #222222;
+  --color-blue: #1447e6;
+  --color-border: #d7d0d0;
+  --font-lato: "Lato", sans-serif;
+  --font-cabin: "Cabin", sans-serif;
+}
+
 .container {
   @apply px-3 xl:px-0 max-w-[1170px] mx-auto
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Lato", sans-serif;
+}
+
+.input {
+  @apply block w-full border border-border px-4 py-2 focus:outline-0
+}
+.primary-btn {
+  @apply cursor-pointer bg-blue text-white py-3 px-5 uppercase hover:bg-[#0c2780] transition-all hover:shadow-xl active:bg-blue
 }
 
 

@@ -1,11 +1,8 @@
-import SingleNews from "./components/SingleNews";
-import MainLayout from "./layout/MainLayout";
+import MainLayout from "./layouts/MainLayout";
 
 const App = () => {
   return (
-    <MainLayout>
-      <SingleNews />
-    </MainLayout>
+    <MainLayout />
   );
 };
 
