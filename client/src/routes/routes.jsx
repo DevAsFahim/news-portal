@@ -6,6 +6,7 @@ import Login from "../pages/Login.jsx";
 import DashboardMain from "../pages/dashboard/Main.jsx";
 import Dashboard from "../pages/dashboard/admin/Dashboard.jsx";
 import Register from "../pages/register.jsx";
+import Users from "../pages/dashboard/admin/Users.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ const router = createBrowserRouter([
     path: "/admin",
     Component: DashboardMain,
     children: [
-      {index: true, Component: Dashboard}
+      {index: true, Component: Dashboard},
+      {
+        path: "users",
+        Component: Users
+      }
     ]
   },
 

@@ -9,7 +9,7 @@ app.use(express.json())
 app.use("/api/v1/", MainRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Welcome to Nexus Report: a news blog website!");
 });
 
 export default app;

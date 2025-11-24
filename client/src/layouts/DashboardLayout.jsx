@@ -9,7 +9,9 @@ const DashboardLayout = () => {
       <Sidebar />
       <div className="flex flex-col w-full">
         <Navbar />
-      <Outlet />
+        <div className="p-6">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
