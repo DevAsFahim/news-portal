@@ -7,6 +7,7 @@ import DashboardMain from "../pages/dashboard/Main.jsx";
 import Dashboard from "../pages/dashboard/admin/Dashboard.jsx";
 import Register from "../pages/register.jsx";
 import Users from "../pages/dashboard/admin/Users.jsx";
+import CreateUser from "../pages/dashboard/admin/CreateUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
       {
         path: "users",
         Component: Users
-      }
+      },
+      {
+        path: "create-user",
+        Component: CreateUser
+      },
     ]
   },
 

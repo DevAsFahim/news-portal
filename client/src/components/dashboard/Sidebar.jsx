@@ -21,6 +21,9 @@ const Sidebar = () => {
         <Link to="/admin/users" className={`${classes}`}>
           Users
         </Link>
+      <Link to="/admin/create-user" className={`${classes}`}>
+          Create User
+        </Link>
         <Link to="/admin" className={classes}>
           Create News
         </Link>
