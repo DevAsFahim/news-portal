@@ -8,6 +8,7 @@ import Dashboard from "../pages/dashboard/admin/Dashboard.jsx";
 import Register from "../pages/register.jsx";
 import Users from "../pages/dashboard/admin/Users.jsx";
 import CreateUser from "../pages/dashboard/admin/CreateUser.jsx";
+import UpdateUser from "../pages/dashboard/admin/UpdateUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "create-user",
         Component: CreateUser
+      },
+      {
+        path: "user/:userId",
+        Component: UpdateUser
       },
     ]
   },

@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
-const CreateUser = () => {
+const UpdateUser = () => {
   const navigate = useNavigate()
+  const { userId } = useParams();
+  const [user, setUser] = useState(null);
   const [formData, setFormData] = useState({
     fullName: "",
     userName: "",
-    password: "",
+    // password: "",
     role: "author",
   });
+
+  const loadUserData = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/v1/user/${userId}`);
+      const data = await res.json();
+
+      setFormData({
+        fullName: data.data.fullName || "",
+        userName: data.data.userName || "",
+        role: data.data.role || "author",
+      });
+    } catch (error) {
+      console.log("error loading user data", error);
+    }
+  };
+
+  useEffect(() => {
+    loadUserData();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,10 +41,10 @@ const CreateUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const res = await fetch("http://localhost:3000/api/v1/user/create", {
-        method: "POST",
+      const res = await fetch(`http://localhost:3000/api/v1/user/${userId}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -32,7 +53,7 @@ const CreateUser = () => {
 
       const data = await res.json();
       toast.success(data.message);
-      navigate('/admin/users')
+      navigate("/admin/users")
     } catch (err) {
       toast.error("Something went wrong!");
       console.log(err);
@@ -42,7 +63,7 @@ const CreateUser = () => {
   return (
     <>
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-4xl font-medium">Create User</h2>
+        <h2 className="text-4xl font-medium">Update User</h2>
       </div>
       <div className="max-w-[600px] mx-auto bg-white p-6 md:p-10 shadow-md">
         <form onSubmit={handleSubmit}>
@@ -77,22 +98,7 @@ const CreateUser = () => {
                 type="text"
                 value={formData.userName}
                 onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label
-                className="text-muted mb-2 inline-block"
-                htmlFor="password"
-              >
-                Password
-              </label>
-              <input
-                className="input mb-4"
-                id="password"
-                placeholder="Password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
+                disabled
               />
             </div>
             <div>
@@ -113,7 +119,7 @@ const CreateUser = () => {
           </div>
 
           <div>
-            <button className="primary-btn w-full">Create User</button>
+            <button className="primary-btn w-full">Update User</button>
           </div>
         </form>
       </div>
@@ -121,4 +127,4 @@ const CreateUser = () => {
   );
 };
 
-export default CreateUser;
+export default UpdateUser;

@@ -1,9 +1,11 @@
 import { FiEdit } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link,useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Users = () => {
+  const navigate = useNavigate()
   const [users, setUsers] = useState(null);
 
   const loadUserData = async () => {
@@ -20,6 +22,20 @@ const Users = () => {
   useEffect(() => {
     loadUserData();
   }, []);
+
+  const deleteUser = async (id) => {
+    try{
+      if(confirm("Are you sure to delete this user?")){
+        const res = await fetch(`http://localhost:3000/api/v1/user/delete-user/${id}`)
+        const result = await res.json()
+ 
+        toast.success(result.message)
+        loadUserData()
+      }
+    }catch(err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div>
@@ -85,11 +101,11 @@ const Users = () => {
                           {user.role}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium flex justify-end gap-4">
-                          <button type="button" className="table-action">
+                          <Link to={`/admin/user/${user._id}`}  className="table-action">
                             <FiEdit />
                             Edit
-                          </button>
-                          <button type="button" className="table-action-delete">
+                          </Link>
+                          <button onClick={()=> deleteUser(user._id)} type="button" className="table-action-delete">
                             <FaTrashAlt />
                             Delete
                           </button>
